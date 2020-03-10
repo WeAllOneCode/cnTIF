@@ -1,4 +1,6 @@
 Interchromosomal frequency score adjusted by copy number (cnadjTIF)
+
+
 Description: R script that takes genome-wide matrix (cis can be NA) and copy number prediction.
 
 Main code: cnadj.R
