@@ -182,8 +182,8 @@ points(iec, res[iec], pch=8, col=col.ec);
 #The result of this script is bcntif.
 bcntif$cnadjTIF = res; #score of interchromosomal interaction adjusted by copy number variation
 head(bcntif)
-
 #cnadjTIF < 0 might mean no enrichment of interchromosomal interaction for that bin.
+write.table(bcntif, file=paste0(libname, '.cntif.txt'), quote=F, col.names=T, row.names=F, sep="\t")
 
 
 

@@ -16,5 +16,5 @@ Inputs:
 5) z3_encode_gap.blacklist.bed (blacklist, a concatenation of UCSC hg19 gaps, ENCODE blacklist, and ChIA-PET greylist).
 
 
-Additional code: clusters2matrix.hg19.py which prints out aggregate interaction matrix from pair tag reads with interaction counts.
+Additional code: clusters2matrix.hg19.py that prints out aggregate interaction matrix from pair tag reads with interaction counts.
 
