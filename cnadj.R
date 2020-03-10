@@ -179,6 +179,9 @@ points(iec, bcntif$tif[iec], pch=8, col=col.ec)
 plotVector(res, idx, vcol = col5, tt=paste("Pol2 ChIA-PET",libname), ylabel = "cnadjTIF", ymax = 1.2*max(res,na.rm=T));
 points(iec, res[iec], pch=8, col=col.ec);
 
+#The result of this script is bcntif.
+bcntif$cnadjTIF = res;
+head(bcntif)
 
 
 
