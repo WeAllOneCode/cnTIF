@@ -180,8 +180,10 @@ plotVector(res, idx, vcol = col5, tt=paste("Pol2 ChIA-PET",libname), ylabel = "c
 points(iec, res[iec], pch=8, col=col.ec);
 
 #The result of this script is bcntif.
-bcntif$cnadjTIF = res;
+bcntif$cnadjTIF = res; #score of interchromosomal interaction adjusted by copy number variation
 head(bcntif)
+
+#cnadjTIF < 0 might mean no enrichment of interchromosomal interaction for that bin.
 
 
 

@@ -5,7 +5,9 @@ Description:  An R script that takes genome-wide matrix (cis can be NA) and copy
 the average trans-chromosomal interaction frequency (TIF) is adjusted by copy number. 
 
 
-Main code: cnadj.R
+Main code: cnadj.R  
+
+
 Inputs: 
 1) HF2354_i50000_rawPET0.mat (N x N matrix). 
 2) hg19_i50000.ind (N rows of bin info).
