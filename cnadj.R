@@ -1,6 +1,6 @@
 # Author: Harianto Tjong
 # Publication: 
-# @The Jackson Laboratory
+# @The Jackson Laboratory for Genomic Medicine
 # March 2020
 # Genome-wide TIF (trans-chromosomal interaction frequency) score adjusted by copy number 
 #Inputs:
