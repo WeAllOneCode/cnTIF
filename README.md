@@ -16,5 +16,6 @@ Inputs included here:
 5) ecDNA_regions.txt (Bed format ecDNA regions).
 
 
-Additional code: clusters2matrix.hg19.py that prints out aggregate interaction matrix from pair tag reads with interaction counts.
+Additional code: 
+clusters2matrix.hg19.py, prints out aggregate interaction matrix from pair tag reads with interaction counts; works directly with ChIA-PET Utilities ([CPU](https://github.com/cheehongsg/CPU/wiki))
 
