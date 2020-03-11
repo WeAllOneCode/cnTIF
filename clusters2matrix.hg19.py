@@ -1,7 +1,8 @@
 #create the interaction matrix from a cluster file
 # and a summary contact as described below.
 #example of cluster file in the input file: (gzip)
-#hr1	3005312	3006423	chr1	4148852	4149854	1
+#The 7th column is interaction count
+#chr1	3005312	3006423	chr1	4148852	4149854	1
 #chr1	3004501	3005612	chr1	51631220	51632231	3
 #chr1	3007277	3008278	chr1	5159978	5161089	19
 #Output is a matrix, index & border files.
@@ -13,8 +14,75 @@ import sys
 import math
 import time
 import gzip
-from binFunc_human import *
 
+#######################################
+def outPutIndex(binning,mergeNum,outIndex):
+    out=open("%s_i%d.ind"%(outIndex,mergeNum),'w')
+    count=1
+    out.write("INDEX%3d CHR      Start      End\n"%(mergeNum))
+    for i in range(len(binning)):
+        for j in range(len(binning[i])-1):
+            out.write("%5d  %6s %10s %10s\n"%(count,get_chr_name(i+1),binning[i][j],binning[i][j+1]))
+            count=count+1
+
+    out.close()
+
+    out=open("%s_i%d.border"%(outIndex,mergeNum),'w')
+    count=1
+    out.write("CHR  Start_Bin End_Bin Length\n")
+    for i in range(len(binning)):
+        out.write("%5s %6s %6s %6s\n"%(get_chr_name(i+1),count,count+len(binning[i])-2,len(binning[i])-1))
+        count=count+len(binning[i])-1
+
+    out.close()
+
+def assign_matrix(matrix,chr_bead,bead_len):
+    chrr=1
+    count=1
+    for m in range(1,bead_len+1):
+        matrix[0][m]=matrix[m][0]=count
+        count=count+1
+        if m==chr_bead[chrr]:
+            chrr=chrr+1
+            count=1
+
+def get_chr_name(num):
+    if num==23:
+        return "chrX"
+    elif num==24:
+        return "chrY"
+    elif num<23:
+        return "chr"+str(num)
+    else:
+        print "Wrong Chromosome Name"
+        sys.exit()
+
+def get_chr_num(ch):
+    try:
+        chnum = int(ch)
+    except:
+        if ch == 'X':
+            chnum = 23
+        elif ch == 'Y':
+            chnum = 24
+        else:
+            chnum = 25
+    return chnum
+
+def get_bead_id(ch,p,binning,chr_bead):
+    #(ch-1) is used because the python list begins with 0
+    binning_chr=binning[ch-1] #binned sites
+    pos = int(p)
+    for i in range(1,len(binning_chr)):
+        if pos<=binning_chr[i] and pos>binning_chr[i-1]:
+            #print 'Got bin:',i, binning_chr[i-1],pos,binning_chr[i],ch
+            binning_pos=i
+            break
+    else:
+        print "Can not assign bead ID! Please check the following:"
+        print 'Last index & bin evaluated for ch & position:',i,binning_chr[-1], ch, pos
+        sys.exit()
+    return binning_pos+chr_bead[ch-1]
 
 #######################################
 file=sys.argv[1]  #gz file
@@ -24,7 +92,6 @@ mincount = 0 # minimum iPET
 
 short_kb = 8000 #20kb cutoff filter
 exclude_chr = ["Y","M"] #not will be in matrix; input summary file does not contain 'chr'-string
-#bin=20000
 #######################################
 
 chr_length=[249250621, 243199373, 198022430, 191154276, 180915260, 171115067, 159138663, 146364022, 141213431, 135534747, 135006516, 133851895, 115169878, 107349540, 102531392, 90354753, 81195210, 78077248, 59128983, 63025520, 48129895, 51304566, 155270560]

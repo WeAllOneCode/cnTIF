@@ -1,4 +1,20 @@
-#Read in genome-wide matrix (trans component) and copy number predicted by readDepth https://github.com/chrisamiller/readDepth
+# Genome-wide TIF (trans-chromosomal interaction frequency) score adjusted by copy number 
+#Inputs:
+#1) A genome-wide interaction matrix, e.g. HF2354_i50000_rawPET0.mat (N x N matrix, N=50000).
+#   - The cis elements are ignored.
+#   - No headers, no row names.
+#2) Index info for the matrix, e.g. hg19_i50000.ind.
+#   - Format:
+#      INDEX50000 CHR      Start      End
+#           1    chr1          0      50000
+#           2    chr1      50000     100000
+#3) Genome-wide copy number prediction
+#   - Simple bedgraph format, No header 
+#   - Example file HF2354.subtractBlacklist.CN.bdg was obtained from the calculation using WGS data with readDepth program (https://github.com/chrisamiller/readDepth), and then blacklist regions (file #4) were removed using "bedtools subtract" tool.
+#4) Collection of blacklist, e.g. z3_encode_gap.blacklist.bed (concatenation of UCSC hg19 gaps, ENCODE blacklist, and ChIA-PET greylist).
+#5) Bed format ecDNA regions, e.g. ecDNA_regions.txt.
+#...........................................................................................
+
 library(ggplot2); #for plotting with alpha, not required
 library(plyr); #for round_any
 
@@ -6,8 +22,6 @@ library(plyr); #for round_any
 libname <- 'HF2354'
 bpbin  <- 50000
 binsize=as.numeric(bpbin);
-
-
 
 #--------------------------------------- functions --------------------------------------
 
