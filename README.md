@@ -17,5 +17,5 @@ Inputs included here:
 
 
 Additional code: 
-clusters2matrix.hg19.py, prints out aggregate interaction matrix from pair tag reads with interaction counts; works directly with ChIA-PET Utilities ([CPU](https://github.com/cheehongsg/CPU/wiki))
+clusters2matrix.hg19.py, prints out aggregate interaction matrix from pair tag reads with interaction counts; works directly with ChIA-PET Utilities ([CPU](https://github.com/cheehongsg/CPU/wiki)).
 
