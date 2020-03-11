@@ -1,3 +1,7 @@
+# Author: Harianto Tjong
+# Publication: 
+# @The Jackson Laboratory
+# March 2020
 # Genome-wide TIF (trans-chromosomal interaction frequency) score adjusted by copy number 
 #Inputs:
 #1) A genome-wide interaction matrix, e.g. HF2354_i50000_rawPET0.mat (N x N matrix, N=50000).
@@ -113,7 +117,6 @@ for (ch in chrs){
     aveNtif[[ch]] = rowMeans(mat2, na.rm=T);
 }
 
-#CN-adjustment
 
 ###########################
 #get blacklisted bins
@@ -125,12 +128,10 @@ for ( i in 1:nrow(blacklist) ){
   iblack = c(iblack, getIndex(idx, blacklist[i,1], blacklist[i,2], blacklist[i,3]));
 }
 iblack = unique(sort(iblack));
-###########################
+#------- ecDNA regions
 ecdnaReg0 = read.table('ecDNA_regions.txt', stringsAsFactors = F);
-
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 
-### START libname here ###
 ecdnaReg = subset(ecdnaReg0, V4==libname)
 iec = NULL;
 for ( i in 1:nrow(ecdnaReg) ){
