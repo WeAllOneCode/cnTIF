@@ -2,7 +2,7 @@
 #Inputs:
 #1) A genome-wide interaction matrix, e.g. HF2354_i50000_rawPET0.mat (N x N matrix, N=50000).
 #   - The cis elements are ignored.
-#   - No headers, no row names.
+#   - First row & column: bin id.
 #2) Index info for the matrix, e.g. hg19_i50000.ind.
 #   - Format:
 #      INDEX50000 CHR      Start      End
