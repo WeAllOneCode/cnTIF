@@ -1,6 +1,6 @@
 #Read in genome-wide matrix (trans component) and copy number predicted by readDepth https://github.com/chrisamiller/readDepth
-library(ggplot2);
-library(plyr)
+library(ggplot2); #for plotting with alpha, not required
+library(plyr); #for round_any
 
 
 libname <- 'HF2354'
@@ -143,7 +143,6 @@ bcntif$tif[ina] = NA;
 bcntif$roundCN = round_any(bcntif$cn,1);
 ###########################
 
-o = bcntif[-ina,];  #for fitting
 obox = bcntif[-union(ina,iec),]; obox = subset(obox, cn>=0.5);
 cnn = table(obox$roundCN);#monitor to remove groups with too small for boxplot
 nr=nrow(obox)
@@ -182,7 +181,7 @@ points(iec, res[iec], pch=8, col=col.ec);
 #The result of this script is bcntif.
 bcntif$cnadjTIF = res; #score of interchromosomal interaction adjusted by copy number variation
 head(bcntif)
-#cnadjTIF < 0 might mean no enrichment of interchromosomal interaction for that bin.
+#cnadjTIF =< 0 might mean no enrichment of interchromosomal interaction for that bin.
 write.table(bcntif, file=paste0(libname, '.cntif.txt'), quote=F, col.names=T, row.names=F, sep="\t")
 
 
