@@ -147,7 +147,6 @@ idlabel = rep(bglabel,nbin); idlabel[iec] = "EC";
 aveNtif = unlist(aveNtif)
 
 ### Getting copy number ###
-regionCN = read.table(paste0('cnv.',libname,'.bedgraph'), stringsAsFactors=F);
 regionCN = read.table(paste0(libname,'.subtractBlacklist.CN.bdg'), stringsAsFactors=F);
 bcn = transBinningCN(regionCN, idx)
 bcntif = data.frame(bcn, tif=aveNtif);
