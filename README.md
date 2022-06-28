@@ -19,3 +19,6 @@ Inputs included here:
 Additional code: 
 clusters2matrix.hg19.py, prints out aggregate interaction matrix from pair tag reads with interaction counts; works directly with ChIA-PET Utilities ([CPU](https://github.com/cheehongsg/CPU/wiki)).
 
+Reference:   
+Zhu Y, Gujar AD, Wong CH, Tjong H, Ngan CY, Gong L, Chen YA, Kim H, Liu J, Li M, Mil-Homens A, Maurya R, Kuhlberg C, Sun F, Yi E, deCarvalho AC, Ruan Y, Verhaak RGW, Wei CL. "Oncogenic extrachromosomal DNA functions as mobile enhancers to globally amplify chromosomal transcription." Cancer Cell. 2021 May 10;39(5):694-707.e7.   
+doi: 10.1016/j.ccell.2021.03.006. Epub 2021 Apr 8. PMID: 33836152; PMCID: PMC8119378.
